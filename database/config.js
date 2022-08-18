@@ -4,7 +4,7 @@ const DBCredentials={
     host:'sql6.freesqldatabase.com',
     user: 'sql6512771',
     database: 'sql6512771',
-    password : 'QmktKLuTLpss',
+    password : 'QmktKLuTLp',
     waitForConnections: true,
     connectionLimit: 5,
     queueLimit: 0,
