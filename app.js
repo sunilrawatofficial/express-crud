@@ -21,7 +21,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.get('/', (req, res, next) => {
+  res.send({message:"welcome to express via nginx"})
+})
 //#region [API/sec]
 app.get('/sync-test', (req, res, next) => {
   
