@@ -8,7 +8,8 @@ var applicationRoutes = require('./routes')
 var helper =  require('./helper/helper')
 var app = express();
 
-
+const database = require('./database/config');
+database.connect();
 
 app.use(logger('dev'));
 app.use(express.json());
