@@ -9,13 +9,13 @@ const DBCredentials={
     connectionLimit: 5,
     queueLimit: 0,
 }
-exports.connect = async () => {
-    try {
-        global.dbInstance = await mysql2.createPool(DBCredentials);
-        await dbInstance.query(`Select * from users`);
-        console.log("Connected to express database")
-    }
-    catch(err) {
-        console.error(err.message)
-    }
-}
+// exports.connect = async () => {
+//     try {
+//         global.dbInstance = await mysql2.createPool(DBCredentials);
+//         await dbInstance.query(`Select * from users`);
+//         console.log("Connected to express database")
+//     }
+//     catch(err) {
+//         console.error(err.message)
+//     }
+// }
