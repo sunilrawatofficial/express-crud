@@ -26,7 +26,6 @@ app.get('/', (req, res, next) => {
         host:process.env.sqlNOTEDBHOST,
         user: process.env.sqlNOTEDBUSERNAME,
         database: process.env.sqlNOTEDBNAME,
-        password : process.env.sqlNOTEDBPASS,
         waitForConnections: true,
         connectionLimit: 5,
         queueLimit: 0,
