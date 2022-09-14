@@ -22,17 +22,7 @@ app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res, next) => {
-      const DBCredentials={
-        host:process.env.sqlNOTEDBHOST,
-        user: process.env.sqlNOTEDBUSERNAME,
-        database: process.env.sqlNOTEDBNAME,
-        waitForConnections: true,
-        connectionLimit: 5,
-        queueLimit: 0,
-    }
-    console.log(DBCredentials);
-
-  res.send({message:"welcome to express via nginx", DBCredentials})
+  res.send({message:"welcome to express via nginx", host: process.env.sqlNOTEDBHOST})
 })
 //#region [API/sec]
 app.get('/sync-test', (req, res, next) => {
