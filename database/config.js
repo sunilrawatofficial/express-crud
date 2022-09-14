@@ -1,10 +1,10 @@
 "use strict"
 const mysql2 = require('mysql2/promise')
 const DBCredentials={
-    host:'sql6.freesqldatabase.com',
-    user: 'sql6512771',
-    database: 'sql6512771',
-    password : 'QmktKLuTLp',
+    host:process.env.sqlNOTEDBHOST,
+    user: process.env.sqlNOTEDBUSERNAME,
+    database: process.env.sqlNOTEDBNAME,
+    password : process.env.sqlNOTEDBPASS,
     waitForConnections: true,
     connectionLimit: 5,
     queueLimit: 0,
