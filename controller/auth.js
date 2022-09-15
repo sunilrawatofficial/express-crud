@@ -32,21 +32,21 @@ class Auth {
             var authentication = new authModel();
             let { email, password } = body;
             let result = await authentication.login(email);
+
             if (result?.length) {
                 let userDetails = result[0];
+
                 if(sha256(password) === userDetails.password){
                     userDetails['accessToken'] = this.generateAccessToken(userDetails['id'], userDetails['email']);
                     return userDetails;
                 }
-                throw new Error("password is incorrect!");
+               return Promise.reject("password is incorrect!");
             }
             else {
-
-                throw new Error("User does not exist!");
+               return Promise.reject("User does not exist!");
             }
         }
         catch(err){
-
             err.statusCode = 401;
             throw new Error(err.message);
         }

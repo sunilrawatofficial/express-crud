@@ -3,8 +3,8 @@ class  User{
     
     async get(id){
         try{
-            let query = `Select * from users where id=${id}`;
-            return await dbInstance.query(query);
+            let [rows] = await readDBInstance.query(`Select * from users where id = ?`, [id]);
+            return rows;
         }
         catch(err){
             throw err
@@ -13,8 +13,7 @@ class  User{
 
     async list(){
         try{
-            let query = 'Select * from users';
-            let [rows] = await dbInstance.query(query);
+            let [rows] = await readDBInstance.query(`Select * from users`,);
             return rows;
         }
         catch(err){
@@ -22,10 +21,10 @@ class  User{
         }
     }
 
-    async update(data){
+    async update(data, id){
         try{
-            console.log(data)
-            req.send(true)
+            let [result] = await writeDBInstance.query(`UPDATE users set ? where id = ?`, [data, id])
+            return Promise.resolve(result)
         }
         catch(err){
             throw err
@@ -34,7 +33,7 @@ class  User{
 
     async delete(id){
         try{
-            let [rows] = await dbInstance.query(`Delete from users where id = ${id}`);
+            let [rows] = await writeDBInstance.query(`DELETE from users where id = ?`,[id]);
             return Promise.resolve(rows)
         }
         catch(err){

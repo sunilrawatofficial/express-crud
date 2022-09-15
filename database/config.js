@@ -11,9 +11,11 @@ const DBCredentials={
 }
 exports.connect = async () => {
     try {
-        global.dbInstance = await mysql2.createPool(DBCredentials);
-        await dbInstance.query(`Select * from users`);
+        global.readDBInstance = mysql2.createPool(DBCredentials);
+        await readDBInstance.query(`Select * from users`);
         console.log("Connected to express database")
+        
+        global.writeDBInstance =  mysql2.createPool(DBCredentials);
     }
     catch(err) {
         console.error(err.message)

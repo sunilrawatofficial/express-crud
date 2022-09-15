@@ -7,7 +7,7 @@ class User {
         try{
             const users = new userModel();
             return await users.get(id);
-            }
+        }
         catch(err){
             throw new Error(err.message);
         }
@@ -23,10 +23,10 @@ class User {
         }
     }
 
-    async update(){
+    async update(data, id){
         try{
             const users = new userModel();
-            return await users.update(req.body);
+            return await users.update(data, id);
         }
         catch(err){
             throw new Error(err.message);
@@ -36,11 +36,7 @@ class User {
     async delete(id){
         try{
             const users = new userModel();
-            if(!this.get(id))
-                return await users.delete(id);
-            else{
-                throw new Error("User does not exist");
-            }
+            return await users.delete(id);
         }
         catch(err){
             throw err
